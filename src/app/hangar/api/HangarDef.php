@@ -17,7 +17,7 @@
  * Bert Hofmänner.............: Idea, Frontend UI, Concept
  * Andreas von Burg...........: Concept
  */
-namespace hangar\entity\model;
+namespace hangar\api;
 
 interface HangarDef {
 	/**
