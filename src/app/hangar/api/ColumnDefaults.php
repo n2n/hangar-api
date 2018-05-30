@@ -23,18 +23,12 @@ interface ColumnDefaults {
 	public function getDefaultIntegerSize(): int;
 	public function getDefaultInterSigned(): bool;
 	public function getDefaultStringLength(): int;
-	/**
-	 * @return string
-	 */
-	public function getDefaultStringCharset();
+	public function getDefaultStringCharset(): ?string;
 	public function getDefaultTextSize(): int;
-	/**
-	 * @return string
-	 */
-	public function getDefaultTextCharset();
+	public function getDefaultTextCharset(): ?string;
 	public function getDefaultBinarySize(): int;
-	public function getDefaultDateTimeDateAvailable(): bool;
-	public function getDefaultDateTimeTimeAvailable(): bool;
+// 	public function getDefaultDateTimeDateAvailable(): bool;
+// 	public function getDefaultDateTimeTimeAvailable(): bool;
 	public function getDefaultFixedPointNumIntegerDigits(): int;
 	public function getDefaultFixedPointNumDecimalDigits(): int;
 	public function getDefaultFloatingPointSize(): int;
