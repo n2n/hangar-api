@@ -21,26 +21,19 @@ namespace hangar\api;
 
 use n2n\util\config\Attributes;
 use phpbob\representation\PhpProperty;
-use phpbob\representation\PhpPropertyAnno;
 use hangar\Hangar;
+use phpbob\representation\PhpTypeDef;
 
 class PropSourceDef {
 	private $phpProperty;
-	private $phpPropertyAnno;
 	private $boolean = false;
-	private $setterTypeName;
-	private $returnTypeName;
+	private $phpTypeDef;
 	private $required;
 	private $hangarData;
 	
-	public function __construct(PhpProperty $phpProperty, PhpPropertyAnno $phpPropertyAnno = null, 
+	public function __construct(PhpProperty $phpProperty, PhpTypeDef $phpTypeDef = null, 
 			Attributes $hangarData = null, bool $required = false) {
 		$this->phpProperty = $phpProperty;
-		if (null !== $phpPropertyAnno) {
-			$this->phpPropertyAnno = $phpPropertyAnno;
-		} else {
-			$this->phpPropertyAnno = new PhpPropertyAnno($phpProperty->getName());
-		}
 		$this->required = $required;
 		
 		if (null !== $hangarData) {
@@ -51,6 +44,7 @@ class PropSourceDef {
 		
 		$this->hangarData->set('required', $required);
 		
+		$this->phpTypeDef = $phpTypeDef;
 	}
 	/**
 	 * @return PhpProperty
@@ -67,36 +61,13 @@ class PropSourceDef {
 		$this->required = $required;
 		$this->hangarData->set('required', $required);
 	}
-	
-	/**
-	 * @return PhpPropertyAnno
-	 */
-	public function getPhpPropertyAnno() {
-		return $this->phpPropertyAnno;
+
+	public function setPhpTypeDef(PhpTypeDef $phpTypeDef = null) {
+		$this->phpTypeDef = $phpTypeDef;
 	}
 	
-	public function isBoolean() {
-		return $this->boolean;
-	}
-
-	public function setBoolean($boolean) {
-		$this->boolean = (bool) $boolean;
-	}
-
-	public function getSetterTypeName() {
-		return $this->setterTypeName;
-	}
-
-	public function setSetterTypeName(string $setterTypeName = null) {
-		$this->setterTypeName = $setterTypeName;
-	}
-
-	public function getReturnTypeName() {
-		return $this->returnTypeName;
-	}
-
-	public function setReturnTypeName(string $returnTypeName = null) {
-		$this->returnTypeName = $returnTypeName;
+	public function getPhpTypeDef() {
+		return $this->phpTypeDef;
 	}
 	
 	public function getHangarData() {
@@ -107,10 +78,7 @@ class PropSourceDef {
 		return $this->phpProperty->getName();
 	}
 	
-// 	/**
-// 	 * @return \hangar\core\config\ColumnDefaults
-// 	 */
-// 	public function getColumnDefaults() {
-// 		return Hangar::getColumnDefaults();
-// 	}
+	public function isBool() {
+		return null !== $this->phpTypeDef && $this->phpTypeDef->isBool();
+	}
 } 
