@@ -23,5 +23,10 @@ interface HangarDef {
 	/**
 	 * @return HangarPropDef []
 	 */
-	public function getPropDefs();
+	public function getPropDefs(): array;
+	
+	/**
+	 * @return TemplateDef []
+	 */
+	public function getTemplateDefs(): array;
 }
