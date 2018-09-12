@@ -26,10 +26,10 @@ use phpbob\representation\PhpTypeDef;
 
 class PropSourceDef {
 	private $phpProperty;
-	private $boolean = false;
 	private $phpTypeDef;
 	private $required;
 	private $hangarData;
+	private $arrayLikePhpTypeDef;
 	
 	public function __construct(PhpProperty $phpProperty, PhpTypeDef $phpTypeDef = null, 
 			Attributes $hangarData = null, bool $required = false) {
@@ -76,6 +76,18 @@ class PropSourceDef {
 	
 	public function getPropertyName() {
 		return $this->phpProperty->getName();
+	}
+	
+	public function setArrayLikePhpTypeDef(PhpTypeDef $arrayLikePhpTypeDef = null) {
+		$this->arrayLikePhpTypeDef = $arrayLikePhpTypeDef;
+	}
+	
+	public function getArrayLikePhpTypeDef() {
+		return $this->arrayLikePhpTypeDef;
+	}
+	
+	public function isArrayLike() {
+		return null !== $this->arrayLikePhpTypeDef;
 	}
 	
 	public function isBool() {
