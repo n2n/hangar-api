@@ -4,7 +4,6 @@ namespace hangar\api;
 
 use phpbob\representation\PhpClass;
 use n2n\web\dispatch\mag\MagDispatchable;
-use hangar\util\Huo;
 
 interface HangarTemplateDef {
 	public function getName(): string;
