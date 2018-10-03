@@ -21,7 +21,6 @@ namespace hangar\api;
 
 use n2n\util\config\Attributes;
 use phpbob\representation\PhpProperty;
-use hangar\Hangar;
 use phpbob\representation\PhpTypeDef;
 
 class PropSourceDef {
