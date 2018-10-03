@@ -30,20 +30,20 @@ interface HangarPropDef {
 	/**
 	 * @param ColumnDefaults $columnDefaults
 	 */
-	public function setup(ColumnDefaults $columnDefaults);
+	public function setup(HuoContext $huoContext, ColumnDefaults $columnDefaults);
 	/**
 	 * Return the Name 
 	 * 
 	 * @return string
 	 */
-	public function getName();
+	public function getName(): string;
 	
 	/**
 	 * Returns the Reflectionclass of the described entityproperty
 	 * 
 	 * @return \ReflectionClass
 	 */
-	public function getEntityPropertyClass();
+	public function getEntityPropertyClass(): \ReflectionClass;
 	
 	/**
 	 * Returns a Optioncollection if the entityproperty needs further configuration otherwise return null
@@ -51,7 +51,7 @@ interface HangarPropDef {
 	 * @param PropSourceDef $propertySourceDef (optional - empty if new)
 	 * @return MagCollection
 	 */
-	public function createMagCollection(PropSourceDef $propSourceDef = null);
+	public function createMagCollection(PropSourceDef $propSourceDef = null): MagCollection;
 	
 	/**
 	 * Reset a PropSourceDef - necessary if a propsourcedef changes
@@ -75,13 +75,13 @@ interface HangarPropDef {
 	 * @param PropSourceDef $propSourceDef
 	 * @return Column
 	 */
-	public function createMetaColumn(EntityProperty $entityProperty, PropSourceDef $propSourceDef);
+	public function createMetaColumn(EntityProperty $entityProperty, PropSourceDef $propSourceDef): ?Column;
 	
 	/**
 	 * @param EntityProperty $entityProperty
 	 * @return int
 	 */
-	public function testCompatibility(EntityProperty $entityProperty);
+	public function testCompatibility(EntityProperty $entityProperty): int;
 	
 	/**
 	 * Apply to Database

@@ -4,7 +4,6 @@ namespace hangar\api;
 use n2n\context\Lookupable;
 use n2n\core\container\N2nContext;
 use n2n\core\module\Module;
-use lib\hangar\api\HuoContext;
 
 class Huo implements Lookupable {
 	
