@@ -2,20 +2,19 @@
 namespace hangar\api;
 
 use n2n\context\Lookupable;
-use hangar\HangarContext;
 use n2n\core\container\N2nContext;
 use n2n\core\module\Module;
 
 class Huo implements Lookupable {
 	
 	private $n2nContext;
-	private $hangarContext;
+	private $huoContext;
 	private $module;
 	
 	public function __construct(... $args) {
 		foreach ($args as $arg) {
-			if ($arg instanceof HangarContext) {
-				$this->hangarContext = $arg;
+			if ($arg instanceof HuoContext) {
+				$this->huoContext = $arg;
 				continue;
 			}
 			
@@ -31,8 +30,7 @@ class Huo implements Lookupable {
 		}
 	}
 	
-	public function _init(HangarContext $hangarContext, $n2nContext) {
-		$this->hangarContext = $hangarContext;
+	public function _init($n2nContext) {
 		$this->n2nContext = $n2nContext;
 	}
 	
@@ -44,10 +42,10 @@ class Huo implements Lookupable {
 	}
 	
 	/**
-	 * @return \hangar\HangarContext
+	 * @return HuoContext
 	 */
-	public function getHangarContext() {
-		return $this->hangarContext;
+	public function getHuoContext() {
+		return $this->huoContext;
 	}
 	
 	/**
@@ -58,7 +56,7 @@ class Huo implements Lookupable {
 	}
 	
 	public function getAppN2nContext() {
-		return $this->hangarContext->getN2nContext();
+		return $this->huoContext->getN2nContext();
 	}
 	
 	/**
