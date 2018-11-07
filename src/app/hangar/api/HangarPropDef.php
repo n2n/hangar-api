@@ -39,13 +39,6 @@ interface HangarPropDef {
 	public function getName(): string;
 	
 	/**
-	 * Returns the Reflectionclass of the described entityproperty
-	 * 
-	 * @return \ReflectionClass
-	 */
-	public function getEntityPropertyClass(): \ReflectionClass;
-	
-	/**
 	 * Returns a Optioncollection if the entityproperty needs further configuration otherwise return null
 	 * 
 	 * @param PropSourceDef $propertySourceDef (optional - empty if new)
@@ -81,7 +74,7 @@ interface HangarPropDef {
 	 * @param EntityProperty $entityProperty
 	 * @return int
 	 */
-	public function testCompatibility(EntityProperty $entityProperty): int;
+	public function testCompatibility(PropSourceDef $propSourceDef): int;
 	
 	/**
 	 * Apply to Database

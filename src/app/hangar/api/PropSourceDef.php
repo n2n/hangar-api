@@ -22,6 +22,7 @@ namespace hangar\api;
 use n2n\util\config\Attributes;
 use phpbob\representation\PhpProperty;
 use phpbob\representation\PhpTypeDef;
+use phpbob\representation\anno\PhpAnno;
 
 class PropSourceDef {
 	private $phpProperty;
@@ -91,5 +92,66 @@ class PropSourceDef {
 	
 	public function isBool() {
 		return null !== $this->phpTypeDef && $this->phpTypeDef->isBool();
+	}
+	
+	public function determineTypeName(string $localName) {
+		return $this->phpProperty->determineTypeName($localName);
+	}
+	
+	/**
+	 * @param string $typeName
+	 * @return boolean
+	 */
+	public function hasPhpPropertyAnno(string $typeName) {
+		return $this->phpProperty->getPhpPropertyAnnoCollection()->hasPhpAnno($typeName);
+	}
+	
+	/**
+	 * @param string $typeName
+	 * @return PhpAnno
+	 */
+	public function getPhpPropertyAnno(string $typeName) {
+		return $this->phpProperty->getPhpPropertyAnnoCollection()->getPhpAnno($typeName);
+	}
+	
+	/**
+	 * @param string $typeName
+	 * @return PhpAnno
+	 */
+	public function getOrCreatePhpPropertyAnno(string $typeName) {
+		return $this->phpProperty->getPhpPropertyAnnoCollection()->getOrCreatePhpAnno($typeName);
+	}
+	
+	/**
+	 * @param string $typeName
+	 * @return PropSourceDef
+	 */
+	public function removePhpPropertyAnno(string $typeName) {
+		$this->phpProperty->getPhpPropertyAnnoCollection()->removePhpAnno($typeName);
+		
+		return $this;
+	}
+	
+	/**
+	 * @param string $typeName
+	 * @param string $alias
+	 * @param string $type
+	 * 
+	 * @return PropSourceDef
+	 */
+	public function createPhpUse(string $typeName, string $alias = null, string $type = null) {
+		$this->phpProperty->createPhpUse($typeName, $alias, $type);
+		
+		return $this;
+	}
+	
+	/**
+	 * @param string $typeName
+	 * @return PropSourceDef
+	 */
+	public function removePhpUse(string $typeName) {
+		$this->phpProperty->removePhpUse($typeName);
+		
+		return $this;
 	}
 } 
