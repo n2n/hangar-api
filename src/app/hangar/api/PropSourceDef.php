@@ -19,7 +19,7 @@
  */
 namespace hangar\api;
 
-use n2n\util\config\Attributes;
+use n2n\util\type\attrs\Attributes;
 use phpbob\representation\PhpProperty;
 use phpbob\representation\PhpTypeDef;
 use phpbob\representation\anno\PhpAnno;

@@ -23,7 +23,7 @@ use n2n\web\dispatch\mag\MagCollection;
 use n2n\persistence\meta\structure\ColumnFactory;
 use n2n\persistence\meta\structure\Column;
 use n2n\persistence\orm\property\EntityProperty;
-use n2n\util\config\Attributes;
+use n2n\util\type\attrs\Attributes;
 use n2n\reflection\annotation\AnnotationSet;
 
 interface HangarPropDef {
