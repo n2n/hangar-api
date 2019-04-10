@@ -23,6 +23,7 @@ use n2n\util\type\attrs\Attributes;
 use phpbob\representation\PhpProperty;
 use phpbob\representation\PhpTypeDef;
 use phpbob\representation\anno\PhpAnno;
+use phpbob\representation\PhpClassLikeAdapter;
 
 class PropSourceDef {
 	private $phpProperty;
@@ -153,5 +154,23 @@ class PropSourceDef {
 		$this->phpProperty->removePhpUse($typeName);
 		
 		return $this;
+	}
+	
+	public static function fromPhpProperty(PhpProperty $phpProperty) {
+		$propSourceDef = new PropSourceDef($phpProperty, $phpProperty->determinePhpTypeDef());
+		
+		if (null !== ($arrayLikePhpTypeDef = $phpProperty->determineArrayLikePhpTypeDef())) {
+			$propSourceDef->setArrayLikePhpTypeDef($arrayLikePhpTypeDef);
+		}
+		
+		$phpClassLike = $phpProperty->getPhpClassLike();
+		
+		$setterMethodName = PhpClassLikeAdapter::determineSetterMethodName($phpProperty->getName());
+		if ($phpClassLike->hasPhpMethod($setterMethodName) 
+				&& null !== ($firstParam = $phpClassLike->getPhpMethod($setterMethodName)->getFirstPhpParam())) {
+			$propSourceDef->setRequired($firstParam->isMandatory());
+		}
+		
+		return $propSourceDef;
 	}
 } 
