@@ -19,11 +19,11 @@
  */
 namespace hangar\api;
 
-use n2n\util\type\attrs\Attributes;
 use phpbob\representation\PhpProperty;
 use phpbob\representation\PhpTypeDef;
 use phpbob\representation\anno\PhpAnno;
 use phpbob\representation\PhpClassLikeAdapter;
+use n2n\util\type\attrs\DataSet;
 
 class PropSourceDef {
 	private $phpProperty;
@@ -33,14 +33,14 @@ class PropSourceDef {
 	private $arrayLikePhpTypeDef;
 	
 	public function __construct(PhpProperty $phpProperty, PhpTypeDef $phpTypeDef = null, 
-			Attributes $hangarData = null, bool $required = false) {
+			DataSet $hangarData = null, bool $required = false) {
 		$this->phpProperty = $phpProperty;
 		$this->required = $required;
 		
 		if (null !== $hangarData) {
 			$this->hangarData = $hangarData;
 		} else {
-			$this->hangarData = new Attributes();
+			$this->hangarData = new DataSet();
 		}
 		
 		$this->hangarData->set('required', $required);
@@ -69,6 +69,10 @@ class PropSourceDef {
 	
 	public function getPhpTypeDef() {
 		return $this->phpTypeDef;
+	}
+	
+	public function hasPhpTypeDef() {
+		return null !== $this->phpTypeDef;
 	}
 	
 	public function getHangarData() {
