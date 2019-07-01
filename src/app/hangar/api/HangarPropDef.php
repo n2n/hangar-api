@@ -25,6 +25,7 @@ use n2n\persistence\meta\structure\Column;
 use n2n\persistence\orm\property\EntityProperty;
 use n2n\util\type\attrs\Attributes;
 use n2n\reflection\annotation\AnnotationSet;
+use n2n\util\type\attrs\DataSet;
 
 interface HangarPropDef {
 	/**
@@ -57,10 +58,10 @@ interface HangarPropDef {
 	/**
 	 * Update a PropSourceDef to describe a entityproperty
 	 * 
-	 * @param Attributes $attributes
+	 * @param DataSet $attributes
 	 * @param PropSourceDef $propSourceDef
 	 */
-	public function updatePropSourceDef(Attributes $attributes, PropSourceDef $propSourceDef);
+	public function updatePropSourceDef(DataSet $dataSet, PropSourceDef $propSourceDef);
 	
 	
 	/**
@@ -75,6 +76,14 @@ interface HangarPropDef {
 	 * @return int
 	 */
 	public function testCompatibility(PropSourceDef $propSourceDef): int;
+	
+	/**
+	 * Returns if Property Type is Basic - necessary for Basic stuff for Example 
+	 * if this property can be used as id property
+	 * 
+	 * @return bool
+	 */
+	public function isBasic(): bool;
 	
 	/**
 	 * Apply to Database
