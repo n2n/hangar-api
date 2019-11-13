@@ -50,7 +50,7 @@ interface HangarPropDef {
 	/**
 	 * Reset a PropSourceDef - necessary if a propsourcedef changes
 	 *
-	 * @param Attributes $attributes
+	 * @param Attributes $dataSet
 	 * @param PropSourceDef $propSourceDef
 	 */
 	public function resetPropSourceDef(PropSourceDef $propSourceDef);
@@ -58,7 +58,7 @@ interface HangarPropDef {
 	/**
 	 * Update a PropSourceDef to describe a entityproperty
 	 * 
-	 * @param DataSet $attributes
+	 * @param DataSet $dataSet
 	 * @param PropSourceDef $propSourceDef
 	 */
 	public function updatePropSourceDef(DataSet $dataSet, PropSourceDef $propSourceDef);
