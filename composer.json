@@ -31,7 +31,12 @@
 		"psr-4" : {
 			"hangar\\api\\" : "src/app/hangar/api"
 		}
-	}	,
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"hangar\\api\\" : "src/test/hangar/api"
+		}
+	},
 	"require-dev" : {
 		"phpunit/phpunit" : "^9.5"
 	}
