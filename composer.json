@@ -20,7 +20,6 @@
 		"vendor-dir" : "src/vendor"
 	},
 	"require" : {
-		"php" : ">=7.0",
 		"n2n/n2n-web" : "^7.2.33",
 		"n2n/n2n-persistence" : "^7.2.33",
 		"n2n/n2n-util" : "^7.2.33",
