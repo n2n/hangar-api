@@ -19,8 +19,8 @@
  */
 namespace hangar\api;
 
-use n2n\persistence\meta\Database;
-use n2n\persistence\meta\structure\Table;
+use n2n\spec\dbo\meta\structure\Database;
+use n2n\spec\dbo\meta\structure\Table;
 
 class DbInfo {
 	private $database;
