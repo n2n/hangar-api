@@ -32,8 +32,8 @@ class PropSourceDef {
 	private $hangarData;
 	private $arrayLikePhpTypeDef;
 	
-	public function __construct(PhpProperty $phpProperty, PhpTypeDef $phpTypeDef = null, 
-			DataSet $hangarData = null, bool $required = false) {
+	public function __construct(PhpProperty $phpProperty, ?PhpTypeDef $phpTypeDef = null,
+			?DataSet $hangarData = null, bool $required = false) {
 		$this->phpProperty = $phpProperty;
 		$this->required = $required;
 		
@@ -63,7 +63,7 @@ class PropSourceDef {
 		$this->hangarData->set('required', $required);
 	}
 
-	public function setPhpTypeDef(PhpTypeDef $phpTypeDef = null) {
+	public function setPhpTypeDef(?PhpTypeDef $phpTypeDef = null) {
 		$this->phpTypeDef = $phpTypeDef;
 	}
 	
@@ -83,7 +83,7 @@ class PropSourceDef {
 		return $this->phpProperty->getName();
 	}
 	
-	public function setArrayLikePhpTypeDef(PhpTypeDef $arrayLikePhpTypeDef = null) {
+	public function setArrayLikePhpTypeDef(?PhpTypeDef $arrayLikePhpTypeDef = null) {
 		$this->arrayLikePhpTypeDef = $arrayLikePhpTypeDef;
 	}
 	
@@ -144,7 +144,7 @@ class PropSourceDef {
 	 * 
 	 * @return PropSourceDef
 	 */
-	public function createPhpUse(string $typeName, string $alias = null, string $type = null) {
+	public function createPhpUse(string $typeName, ?string $alias = null, ?string $type = null) {
 		$this->phpProperty->createPhpUse($typeName, $alias, $type);
 		
 		return $this;
