@@ -20,10 +20,11 @@
 		"vendor-dir" : "src/vendor"
 	},
 	"require" : {
-		"n2n/n2n-web" : "^7.2.33",
-		"n2n/n2n-persistence" : "^7.2.33",
-		"n2n/n2n-util" : "^7.2.33",
-		"n2n/n2n-reflection" : "^7.2.33",
+		"n2n/n2n-web" : "^7.4",
+		"n2n/n2n-persistence" : "^7.4",
+		"n2n/n2n-util" : "^7.4",
+		"n2n/n2n-reflection" : "^7.4",
+        "n2n/n2n-spec-dbo": "^1",
 		"n2n/phpbob" : "^1.0.7"
 	},
 	"autoload" : {

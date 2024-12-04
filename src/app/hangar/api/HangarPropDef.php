@@ -45,7 +45,7 @@ interface HangarPropDef {
 	 * @param PropSourceDef $propertySourceDef (optional - empty if new)
 	 * @return MagCollection
 	 */
-	public function createMagCollection(PropSourceDef $propSourceDef = null): MagCollection;
+	public function createMagCollection(?PropSourceDef $propSourceDef = null): MagCollection;
 	
 	/**
 	 * Reset a PropSourceDef - necessary if a propsourcedef changes
